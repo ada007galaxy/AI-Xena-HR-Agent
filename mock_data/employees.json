@@ -1,0 +1,38 @@
+[
+  {
+    "employee_id": "EMP001",
+    "name": "Alex Morgan",
+    "role": "Software Engineer",
+    "department": "Engineering",
+    "employment_type": "Full-time",
+    "location": "Glasgow, UK",
+    "manager": "Jordan Lee",
+    "start_date": "2024-04-15",
+    "remote_status": "Hybrid",
+    "office": "Glasgow"
+  },
+  {
+    "employee_id": "EMP002",
+    "name": "Sam Taylor",
+    "role": "Product Analyst",
+    "department": "Product",
+    "employment_type": "Full-time",
+    "location": "Manchester, UK",
+    "manager": "Priya Shah",
+    "start_date": "2025-01-13",
+    "remote_status": "Remote",
+    "office": "Manchester"
+  },
+  {
+    "employee_id": "EMP003",
+    "name": "Jamie Wilson",
+    "role": "Customer Success Specialist",
+    "department": "Customer Success",
+    "employment_type": "Part-time",
+    "location": "Bristol, UK",
+    "manager": "Morgan Reed",
+    "start_date": "2025-06-02",
+    "remote_status": "Hybrid",
+    "office": "Bristol"
+  }
+]

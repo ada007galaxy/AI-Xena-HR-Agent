@@ -1,0 +1,5 @@
+{
+  "EMP001": {"medical": "enrolled", "dental": "enrolled", "pension": "enrolled", "cycle_to_work": "eligible"},
+  "EMP002": {"medical": "enrolled", "dental": "waived", "pension": "enrolled", "cycle_to_work": "eligible"},
+  "EMP003": {"medical": "enrolled", "dental": "enrolled", "pension": "not_eligible", "cycle_to_work": "not_eligible"}
+}

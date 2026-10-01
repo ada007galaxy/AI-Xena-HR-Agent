@@ -1,0 +1,11 @@
+Flask>=3.1,<4
+python-dotenv>=1.0,<2
+requests>=2.32,<3
+numpy>=1.26,<3
+sentence-transformers>=3.4,<6
+chromadb>=1.0,<2
+mcp>=1.9,<2
+pypdf>=5,<7
+beautifulsoup4>=4.12,<5
+gunicorn>=23,<24
+pytest>=8,<9

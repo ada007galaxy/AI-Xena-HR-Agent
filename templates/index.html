@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Xena HR Agent</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">X</div>
+      <div><strong>Xena HR Agent</strong><span>Policy + RAG + MCP</span></div>
+    </div>
+    <div id="health" class="status">Checking system…</div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <section>
+        <h2>Try the demos</h2>
+        <p class="muted">These are designed to demonstrate multi-step agentic workflows.</p>
+        <button class="demo" data-demo="remote-work"><strong>Remote work</strong><span>Employee lookup → policy RAG → compliance</span></button>
+        <button class="demo" data-demo="pto-request"><strong>PTO request</strong><span>Employee lookup → balance → policy → draft</span></button>
+      </section>
+      <section class="guide">
+        <h2>What Xena shows</h2>
+        <ul>
+          <li>Grounded policy answers</li>
+          <li>Mock employee data</li>
+          <li>MCP tool discovery and calls</li>
+          <li>Citations and source snippets</li>
+          <li>Safe, non-irreversible actions</li>
+        </ul>
+      </section>
+    </aside>
+
+    <section class="chat-panel">
+      <div id="messages" class="messages">
+        <div class="message assistant welcome">
+          <div class="avatar">X</div>
+          <div>
+            <p><strong>Welcome.</strong> Ask me an HR policy question or run one of the demo workflows.</p>
+            <p class="muted">Example: “EMP001 wants 3 days of PTO next week. Check their balance and the policy.”</p>
+          </div>
+        </div>
+      </div>
+
+      <form id="chat-form" class="composer">
+        <textarea id="message" rows="3" placeholder="Ask an HR policy or workflow question…" required></textarea>
+        <div class="composer-row">
+          <span class="hint">Use synthetic IDs such as EMP001 for employee-specific workflows.</span>
+          <button type="submit" id="send">Ask Xena</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

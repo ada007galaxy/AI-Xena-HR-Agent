@@ -1,0 +1,5 @@
+{
+  "EMP001": {"available_days": 12, "pending_days": 0, "annual_allowance": 25},
+  "EMP002": {"available_days": 7, "pending_days": 2, "annual_allowance": 25},
+  "EMP003": {"available_days": 5, "pending_days": 1, "annual_allowance": 20}
+}
