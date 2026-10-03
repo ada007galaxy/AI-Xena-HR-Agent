@@ -52,16 +52,46 @@ class PolicyRAG:
     def _load_or_build(self) -> None:
         metadata_path = self.index_dir / "chunks.json"
         vectors_path = self.index_dir / "embeddings.npy"
+
+        # In lightweight deployment mode, always rebuild the
+        # small lexical index so it matches the current vocabulary.
+        if not USE_EMBEDDINGS:
+            self.build()
+            return
+
+    def _load_or_build(self) -> None:
+        metadata_path = self.index_dir / "chunks.json"
+        vectors_path = self.index_dir / "embeddings.npy"
+
+        # In lightweight deployment mode, always rebuild the
+        # small lexical index so it matches the current vocabulary.
+        if not USE_EMBEDDINGS:
+            self.build()
+            return
+
         if metadata_path.exists() and vectors_path.exists():
-            self.chunks = [Chunk(**item) for item in json.loads(metadata_path.read_text(encoding="utf-8"))]
+            self.chunks = [
+                Chunk(**item)
+                for item in json.loads(
+                    metadata_path.read_text(encoding="utf-8")
+                )
+            ]
             self.embeddings = np.load(vectors_path)
+
             try:
                 import chromadb
-                client = chromadb.PersistentClient(path=str(self.index_dir / "chroma"))
-                self.vector_store = client.get_or_create_collection("hr_policy")
+
+                client = chromadb.PersistentClient(
+                    path=str(self.index_dir / "chroma")
+                )
+                self.vector_store = client.get_or_create_collection(
+                    "hr_policy"
+                )
             except Exception:
                 self.vector_store = None
+
             return
+
         self.build()
 
     def _load_embedder(self):
@@ -173,7 +203,7 @@ class PolicyRAG:
         if not query.strip() or not self.chunks or self.embeddings is None:
             return []
         query_vector = self._embed([query])[0]
-        if self.vector_store is not None:
+        if USE_EMBEDDINGS and self.vector_store is not None:
             try:
                 response = self.vector_store.query(query_embeddings=[query_vector.tolist()], n_results=k)
                 ids = response.get("ids", [[]])[0]
