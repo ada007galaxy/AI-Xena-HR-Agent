@@ -41,6 +41,7 @@ class PolicyRAG:
         self.embedder = None
         self.vector_store = None
         self._load_or_build()
+        self._load_embedder()
 
     def _load_or_build(self) -> None:
         metadata_path = self.index_dir / "chunks.json"
