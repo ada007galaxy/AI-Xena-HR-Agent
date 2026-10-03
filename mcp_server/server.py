@@ -50,15 +50,23 @@ def search_policy_documents(query: str, k: int = 4) -> dict[str, Any]:
 
     print(f"MCP RAG search started: {query}", file=sys.stderr)
 
-    results = RAG.search(
-        query,
-        k=max(1, min(k, 8))
-    )
+    try:
+        results = RAG.search(
+            query,
+            k=max(1, min(k, 8))
+        )
 
-    print(
-        f"MCP RAG search finished: {len(results)} results",
-        file=sys.stderr
-    )
+        print(
+            f"MCP RAG search finished: {len(results)} results",
+            file=sys.stderr
+        )
+
+    except Exception as exc:
+        print(
+            f"MCP RAG SEARCH ERROR: {type(exc).__name__}: {exc}",
+            file=sys.stderr
+        )
+        raise
 
     return {
         "query": query,
