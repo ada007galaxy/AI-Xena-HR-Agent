@@ -15,7 +15,13 @@ from typing import Any
 
 import numpy as np
 
-from config import EMBEDDING_MODEL, INDEX_DIR, POLICY_DIR, RETRIEVAL_K
+from config import (
+    EMBEDDING_MODEL,
+    INDEX_DIR,
+    POLICY_DIR,
+    RETRIEVAL_K,
+    USE_EMBEDDINGS,
+)
 from document_loader import load_sections
 
 
@@ -59,6 +65,10 @@ class PolicyRAG:
         self.build()
 
     def _load_embedder(self):
+        if not USE_EMBEDDINGS:
+            self.embedder = False
+            return self.embedder
+
         if self.embedder is None:
             try:
                 from sentence_transformers import SentenceTransformer
