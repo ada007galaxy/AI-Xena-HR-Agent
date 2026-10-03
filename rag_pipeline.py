@@ -135,8 +135,8 @@ class PolicyRAG:
                         )
                     )
         texts = [chunk.text for chunk in chunks]
-        vectors = self._embed(texts)
         self.chunks = chunks
+        vectors = self._embed(texts)
         self.embeddings = vectors
         (self.index_dir / "chunks.json").write_text(
             json.dumps([asdict(chunk) for chunk in chunks], indent=2), encoding="utf-8"
