@@ -35,7 +35,7 @@ AI-Xena-HR-Agent/
 ├── agent/
 │   ├── planner.py
 │   └── orchestrator.py
-├── mcp/
+├── mcp_server/
 │   ├── server.py
 │   └── client.py
 ├── mock_data/
@@ -122,11 +122,10 @@ Render is configured in `render.yaml`. Connect the GitHub repository, set `OPENR
 
 After deployment, verify:
 
-```text
-<DEPLOYED_URL>/health
-```
+https://ai-xena-hr-agent.onrender.com/health
 
-Add the real URL to `deployed.md` and this README before submission.
+Deployed application:
+https://ai-xena-hr-agent.onrender.com
 
 ## Evaluation
 
