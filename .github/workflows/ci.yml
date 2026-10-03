@@ -17,6 +17,6 @@ jobs:
       - name: Build RAG index
         run: python ingest.py
       - name: Run tests
-        run: pytest -q
+        run: PYTHONPATH=. pytest -q
       - name: Import/start check
         run: python -c "from app import app; print(app.url_map)"
