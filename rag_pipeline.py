@@ -133,7 +133,8 @@ class PolicyRAG:
         matrix = np.zeros((len(texts), len(vocab)), dtype=np.float32)
         for row, tokens in enumerate(token_sets):
             for token in tokens:
-                matrix[row, index[token]] += 1.0
+                if token in index:
+                    matrix[row, index[token]] += 1.0
         norms = np.linalg.norm(matrix, axis=1, keepdims=True)
         return matrix / np.maximum(norms, 1e-8)
 
