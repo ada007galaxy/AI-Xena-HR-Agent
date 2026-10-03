@@ -16,6 +16,20 @@ jobs:
         run: pip install -r requirements.txt
       - name: Build RAG index
         run: python ingest.py
+
+      - name: Start MCP server
+        run: |
+          python mcp_server/server.py > /tmp/mcp.log 2>&1 &
+          for i in {1..30}; do
+            if python -c "import socket; s=socket.create_connection(('127.0.0.1', 8000), 1); s.close()" 2>/dev/null; then
+              echo "MCP server is ready."
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/mcp.log
+          exit 1
+
       - name: Run tests
         run: PYTHONPATH=. pytest -q
       - name: Import/start check
