@@ -175,6 +175,12 @@ class PolicyRAG:
         np.save(self.index_dir / "embeddings.npy", vectors)
         # Persist the same vectors in Chroma when the package is available.
         # The NumPy files remain the lightweight fallback for local tests.
+
+        if not USE_EMBEDDINGS:
+            self.vector_store = None
+            return {"documents": len(set(c.document_id for c in chunks)), "chunks": len(chunks)}
+
+
         try:
             import chromadb
 
