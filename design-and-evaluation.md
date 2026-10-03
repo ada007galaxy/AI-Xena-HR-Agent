@@ -8,7 +8,7 @@ flowchart LR
     W --> O[Agent Orchestrator]
     O --> P[Planner / OpenRouter]
     O --> C[MCP Client]
-    C --> S[MCP Server - stdio]
+    C --> S[MCP Server - Streamable HTTP]
     S --> R[RAG Index]
     S --> D[Mock HR JSON]
     O --> L[LLM Synthesis / OpenRouter]
@@ -18,7 +18,7 @@ flowchart LR
     R --> CH[Chroma / NumPy fallback]
 ```
 
-The application is intentionally deployable as one free-tier service. The web process starts the MCP server as a local subprocess and communicates with it using the MCP stdio transport. This matches the project brief's permitted single-service architecture.
+The application is intentionally deployable as one free-tier service. The web process starts the MCP server as a local subprocess and communicates with it using the MCP Streamable HTTP transport. This matches the project brief's permitted single-service architecture.
 
 ## 2. RAG design
 
