@@ -1,8 +1,8 @@
 # Deployment
 
-**Deployed application URL:** Add the final Render/Railway URL here after deployment.
+**Deployed application URL:** https://ai-xena-hr-agent.onrender.com
 
-**Health endpoint:** `<DEPLOYED_URL>/health`
+**Health endpoint:** https://ai-xena-hr-agent.onrender.com/health
 
 ## Free-tier notes
 
